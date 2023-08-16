@@ -1,0 +1,46 @@
+.special-offer-card {
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0.5em;
+    padding-bottom: 1em;
+    border: 1px solid #e7e6eb;
+    > img {
+        border-radius: 12px;
+    }
+
+    .add-to-wishlist-btn {
+        opacity: 0;
+        transform: translateX(200%);
+        transition: all ease-in 300ms;
+    }
+    .score-rating-tag {
+        opacity: 0;
+        transform: translateX(-200%);
+        transition: all ease-in 300ms;
+        background-color: rgba(255, 255, 255, .6);
+        border-radius: 8px;
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .4em .8em;
+        &::before {
+            content: url(../assets/icons/icon-star-yellow.svg);
+            display: block;
+            width: 25px;
+        }
+    }
+    &:hover {
+        .add-to-wishlist-btn,
+        .score-rating-tag {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all ease-in 300ms;
+        }
+    }
+}
+
+
+.post-card{
+
+}

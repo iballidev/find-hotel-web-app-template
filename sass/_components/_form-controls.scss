@@ -1,0 +1,26 @@
+.input-control-group {
+    --btnWidth: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-color: 3px solid var(--color-interaction);
+    padding: 1px;
+    overflow: hidden;
+    input {
+        width: 100%;
+        max-width: calc(100% - var(--btnWidth));
+        padding: 0.3em 0.5em;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    button {
+        // background-color: aqua;
+        width: var(--btnWidth);
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

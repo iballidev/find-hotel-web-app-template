@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find Hotel</title>
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="./stylesheets/main.css">
+        <!-- OwlCarousel2-2.3.4 CSS -->
+        <link rel="stylesheet" href="./assets/libs/OwlCarousel2-2.3.4/owl.carousel.min.css">
+        <link rel="stylesheet" href="./assets/libs/OwlCarousel2-2.3.4/owl.theme.default.min.css">
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <!-- Main navigation -->
+            <nav class="main-toolbar">
+                <div class="main-wrapper mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
+                    <div class="relative flex h-16 items-center justify-between">
+                        <div class="flex">
+                            <div class="inset-y-0 left-0 flex items-center sm:hidden">
+                                <!-- Mobile menu button-->
+                                <button
+                                    type="button"
+                                    class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                                    aria-controls="mobile-menu"
+                                    aria-expanded="false"
+                                >
+                                    <span class="absolute -inset-0.5"></span>
+                                    <span class="sr-only">Open main menu</span>
+                                    <!--
+                          Icon when menu is closed.
+              
+                          Menu open: "hidden", Menu closed: "block"
+                        -->
+                                    <svg
+                                        class="block h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                                    </svg>
+                                    <!--
+                          Icon when menu is open.
+              
+                          Menu open: "block", Menu closed: "hidden"
+                        -->
+                                    <svg
+                                        class="hidden h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                                <div class="flex flex-shrink-0 items-center">
+                                    <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"> -->
+                                    <img class="h-8 w-auto" src="./assets/images/Find.hotel.svg" alt="Your Company">
+                                </div>
+                                <div class="hidden sm:ml-6 sm:block">
+                                    <div class="flex space-x-4">
+                                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                        <a href="#" class="px-3 py-2 text-sm font-medium" aria-current="page">
+                                            Last Minute
+                                        Deals
+                                        </a>
+                                        <a href="#" class="px-3 py-2 text-sm font-medium">Blog</a>
+                                        <a href="#" class="px-3 py-2 text-sm font-medium">
+                                            About
+                                        us
+                                        </a>
+                                        <a href="#" class="px-3 py-2 text-sm font-medium">Contacts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            <button type="button" class="relative rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                <span class="absolute -inset-1.5"></span>
+                                <span class="sr-only">View notifications</span>
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+                                </svg>
+                            </button>
+                            <!-- Profile dropdown -->
+                            <div class="user-profile | relative ml-3">
+                                <div>
+                                    <button
+                                        type="button"
+                                        class="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                        id="user-menu-button"
+                                        aria-expanded="false"
+                                        aria-haspopup="true"
+                                    >
+                                        <span class="absolute -inset-1.5"></span>
+                                        <span class="sr-only">Open user menu</span>
+                                        <!-- <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> -->
+                                        <img class="h-8 w-8 rounded-full" src="./assets/icons/icon-profile-avatar.svg" alt="">
+                                    </button>
+                                </div>
+                                <!--
+                          Dropdown menu, show/hide based on menu state.
+              
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                                <div
+                                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="user-menu-button"
+                                    tabindex="-1"
+                                >
+                                    <!-- Active: "bg-gray-100", Not Active: "" -->
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="user-menu-item-0"
+                                    >Your Profile</a>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="user-menu-item-1"
+                                    >Settings</a>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="user-menu-item-2"
+                                    >Sign out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile menu, show/hide based on menu state. -->
+                <div class="sm:hidden" id="mobile-menu">
+                    <div class="space-y-1 px-2 pb-3 pt-2">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <!-- Hero -->
+            <section>
+                <div class="main-wrapper lg:mx-auto max-w-8xl px-2 mb-size-500 sm:px-6 lg:px-8">
+                    <div class="hero">
+                        <h1 class="fs-hero-title lh-200 fw-bold max-w-md">Find an apartment for your vacation</h1>
+                        <h2 class="fs-150 fw-regular mt-size-50 max-w-lg">We have several thousand apartments for every taste in every corner of the globe</h2>
+                        <div class="apartment-search-form-wrapper | drop-shadow-md">
+                            <div class="apartment-search-form | inline-flex rounded-full bg-white mx-auto items-center justify-between space-x-4 p-3">
+                                <!-- <div class="flex items-center space-x-4 p-3"> -->
+                                <div class="label-icon">
+                                    <img src="./assets/icons/icon-location-dark.svg" alt="">
+                                </div>
+                                <div class="text-input">
+                                    <!-- <label for="">Where?</label> -->
+                                    <input
+                                        type="email"
+                                        class="form-input"
+                                        list="available-locations"
+                                        placeholder="Search location"
+                                    >
+                                </div>
+                                <button class="search-btn rounded-full">
+                                    <img src="./assets/icons/icon-search-white.svg" alt="">
+                                </button>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                        <datalist id="available-locations">
+                            <option value="Lagos"></option>
+                            <option value="Abuja"></option>
+                            <option value="Ibadan"></option>
+                            <option value="Port Harcourt"></option>
+                            <option value="Kaduna"></option>
+                            <option value="Enugu"></option>
+                            <option value="Onitsha"></option>
+                        </datalist>
+                    </div>
+                </div>
+            </section>
+            <!-- Why choose us -->
+            <section class="bg-light">
+                <div class="main-wrapper mx-2 lg:mx-auto max-w-8xl pt-size-300 pb-size-300 px-2 sm:px-6 lg:px-8">
+                    <h2 class="text-center fs-section-title fw-semi-bold text-text mb-7">Why Choose Us</h2>
+                    <p class="text-center fs-150" style="max-width: 500px; margin: 0 auto; margin-bottom: 3.75em;">The main reason is because our competitors have disgusting sites, but we can' t write that here, so the text here will be different</p>
+                    <ul class="why-choose-us-list | list grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <li>
+                            <div class="descrip-icon">
+                                <img src="./assets/icons/payment-method-featured-icon.png" alt="">
+                            </div>
+                            <h6 class="fw-semi-bold fs-150 fw-light text-center">Payment methods</h6>
+                            <p class="text-center">We have a lot of them, from cryptocurrencies to barter for potatoes</p>
+                        </li>
+                        <li>
+                            <div class="descrip-icon">
+                                <img src="./assets/icons/simple-search-process-featured-icon.png" alt="">
+                            </div>
+                            <h6 class="fw-semi-bold fs-150 fw-light text-center">Simple search process</h6>
+                            <p class="text-center">We checked it out, even the kid did it, but it was my mom's friend's son</p>
+                        </li>
+                        <li>
+                            <div class="descrip-icon">
+                                <img src="./assets/icons/24-7-support-featured-icon.png" alt="">
+                            </div>
+                            <h6 class="fw-semi-bold fs-150 fw-light text-center">24/7 Support</h6>
+                            <p class="text-center">Is there something you don't understand? Feel free to call us. Phone number in the footer</p>
+                        </li>
+                        <li>
+                            <div class="descrip-icon">
+                                <img src="./assets/icons/we-are-nice-featured-icon.png" alt="">
+                            </div>
+                            <h6 class="fw-semi-bold fs-150 fw-light text-center">We are nice</h6>
+                            <p class="text-center">Fantasy is over, there will be something really convincing here</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- Special offers -->
+            <section>
+                <div class="main-wrapper lg:mx-auto max-w-8xl pt-size-300  pb-size-300 px-2 sm:px-6 lg:px-8">
+                    <h2 class="text-center fs-section-title fw-semi-bold text-text mb-7">Special offers</h2>
+                    <!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+-->
+                    <ul class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-3">
+                        <li class="special-offer-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <h6 class="fs-200">
+                                Wilderness Club at Big Ceddar
+                            </h6>
+                            <p class="text-sm text-alt">2 Bedroom Combined Lodge</p>
+                            <p class="fs-140 mb-2">28 October — 1 November</p>
+                            <p class="text-accent mb-3">
+                                <a href="#cc">
+                                    <!-- <span aria-hidden="true" class="absolute inset-0">
+                                                hello
+                                            </span> -->
+                                    <span class="fs-250">$2016</span>
+                                    <span class="fs-140">/6 night</span>
+                                </a>
+                            </p>
+                            <div aria-hidden="true" class="absolute inset-0 max-h-36">
+                                <div class="flex justify-between p-4">
+                                    <div class="score-rating-tag">
+                                        4.8
+                                    </div>
+                                    <button class="add-to-wishlist-btn | rounded-full">
+                                        <img src="./assets/icons/icon-heart-bg-white-border-danger.svg" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="grid grid-cols-1 lg:grid-cols-3 gap-1 lg:gap-x-1">
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-bed-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">4 Beds</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-avatar-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">8 Sleeps</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-expand-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">1,350 Sq Ft</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--  -->
+                        <li class="special-offer-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <h6 class="fs-200">
+                                Wilderness Club at Big Ceddar
+                            </h6>
+                            <p class="text-sm text-alt">2 Bedroom Combined Lodge</p>
+                            <p class="fs-140 mb-2">28 October — 1 November</p>
+                            <p class="text-accent mb-3">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    <span class="fs-250">$2016</span>
+                                    <span class="fs-140">/6 night</span>
+                                </a>
+                            </p>
+                            <div aria-hidden="true" class="absolute inset-0 max-h-36">
+                                <div class="flex justify-between p-4">
+                                    <div class="score-rating-tag">
+                                        4.8
+                                    </div>
+                                    <button class="add-to-wishlist-btn | rounded-full">
+                                        <img src="./assets/icons/icon-heart-bg-white-border-danger.svg" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="grid grid-cols-1 lg:grid-cols-3 gap-1 lg:gap-x-1">
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-bed-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">4 Beds</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-avatar-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">8 Sleeps</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-expand-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">1,350 Sq Ft</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--  -->
+                        <li class="special-offer-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <h6 class="fs-200">
+                                Wilderness Club at Big Ceddar
+                            </h6>
+                            <p class="text-sm text-alt">2 Bedroom Combined Lodge</p>
+                            <p class="fs-140 mb-2">28 October — 1 November</p>
+                            <p class="text-accent mb-3">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    <span class="fs-250">$2016</span>
+                                    <span class="fs-140">/6 night</span>
+                                </a>
+                            </p>
+                            <div aria-hidden="true" class="absolute inset-0 max-h-36">
+                                <div class="flex justify-between p-4">
+                                    <div class="score-rating-tag">
+                                        4.8
+                                    </div>
+                                    <button class="add-to-wishlist-btn | rounded-full">
+                                        <img src="./assets/icons/icon-heart-bg-white-border-danger.svg" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="grid grid-cols-1 lg:grid-cols-3 gap-1 lg:gap-x-1">
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-bed-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">4 Beds</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-avatar-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">8 Sleeps</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div style="max-width: 20px;">
+                                        <img src="./assets/icons/icon-expand-blue-border.svg" alt="">
+                                    </div>
+                                    <span class="text-sm text-alt">1,350 Sq Ft</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- Reviews -->
+            <section>
+                <div class="main-wrapper lg:mx-auto max-w-8xl pt-size-250  pb-size-250 px-2 sm:px-6 lg:px-8">
+                    <h2 class="text-center fs-section-title fw-semi-bold text-text mb-7">Reviews</h2>
+                    <!-- Set up your HTML -->
+                    <!-- <div class="reviews owl-carousel  owl-theme"> -->
+                    <!-- <button class="customPrevBtn">PREVIOUS</button> -->
+                    <div class="reviews-slider-wrapper">
+                        <div class="reviews-slider owl-carousel">
+                            <div>
+                                <div class="review-card">
+                                    <div class="img-avatar | rounded-full overflow-hidden">
+                                        <!-- <img class="flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt=""> -->
+                                        <img class="bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="">
+                                    </div>
+                                    <blockquote>
+                                        <p class="mb-3 fw-light">I quickly found the right tour for me, but I had a few questions about the hotel, I wrote to tech support and they answered all my questions within an hour. The vacation itself was perfect. Thank you very much. I will come back again and again.</p>
+                                        <footer>
+                                            <span class="fw-semi-bold">Jannike Borg,</span>
+                                            <cite>
+                                                Publisher
+                                            </cite>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="review-card">
+                                    <div class="img-avatar | rounded-full overflow-hidden">
+                                        <!-- <img class="flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt=""> -->
+                                        <img class="bg-gray-50" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5" alt="">
+                                    </div>
+                                    <blockquote>
+                                        <p class="mb-3 fw-light">I quickly found the right tour for me, but I had a few questions about the hotel, I wrote to tech support and they answered all my questions within an hour. The vacation itself was perfect.</p>
+                                        <footer>
+                                            <span class="fw-semi-bold">LeBron Durant,</span>
+                                            <cite>
+                                                Flight attendant
+                                            </cite>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="review-card">
+                                    <div class="img-avatar | rounded-full overflow-hidden">
+                                        <!-- <img class="flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt=""> -->
+                                        <img class="bg-gray-50" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d" alt="">
+                                    </div>
+                                    <blockquote>
+                                        <p class="mb-3 fw-light">I wrote to tech support and they answered all my questions within an hour. Excellent service.</p>
+                                        <footer>
+                                            <span class="fw-semi-bold">Kaarel Piho,</span>
+                                            <cite>
+                                                Cinematographer
+                                            </cite>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="review-card">
+                                    <div class="img-avatar | rounded-full overflow-hidden">
+                                        <!-- <img class="flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt=""> -->
+                                        <img class="bg-gray-50" src="https://media.istockphoto.com/id/1365357021/photo/passport-photo-of-serious-african-american-young-adult-woman.jpg?s=612x612&w=0&k=20&c=n7qo_MtHw5geun3pIogojU8i8M1genB-zRrWTTi1sxg=" alt="">
+                                    </div>
+                                    <blockquote>
+                                        <p class="mb-3 fw-light">I quickly found the right tour for me, but I had a few questions about the hotel, I wrote to tech support and they answered all my questions within an hour. The vacation itself was perfect. Thank you very much. I will come back again and again.</p>
+                                        <footer>
+                                            <span class="fw-semi-bold">Rebecca Miles,</span>
+                                            <cite>
+                                                Model | Entrepreneur
+                                            </cite>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <!--  -->
+                        </div>
+                        <div class="flex-initial ">
+                            <button class="customPrevBtn">
+                                <!-- PREVIOUS --></button>
+                            <button class="customNextBtn">
+                                <!-- NEXT --></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Recent posts -->
+            <section>
+                <div class="main-wrapper lg:mx-auto max-w-8xl pt-size-250  pb-size-250 px-2 sm:px-6 lg:px-8">
+                    <h2 class="text-center fs-section-title fw-semi-bold text-text mb-7">Recent posts</h2>
+                    <ul class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-3">
+                        <li class="post-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-xl bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <div class="mt-4 flex justify-between fs-nav">
+                                <div>
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        May 23, 2022
+                                    </a>
+                                </div>
+                                <div class="text-accent fw-regular flex gap-1 justify-end">
+                                    <div style="width: 20px;">
+                                        <img src="./assets/icons/icon-bx_time-five.svg" alt="">
+                                    </div>
+                                    <div>5 minutes</div>
+                                </div>
+                            </div>
+                            <h3 class="mt-1 fw-semi-bold fs-150">My trip to Athens</h3>
+                            <p>It would seem that in a city where Theseus, Plato and Epicurus once walked, the very idea of the subway is alien to the city, but already...</p>
+                        </li>
+                        <li class="post-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-xl bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <div class="mt-4 flex justify-between fs-nav">
+                                <div>
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        May 23, 2022
+                                    </a>
+                                </div>
+                                <div class="text-accent fw-regular flex gap-1 justify-end">
+                                    <div style="width: 20px;">
+                                        <img src="./assets/icons/icon-bx_time-five.svg" alt="">
+                                    </div>
+                                    <div>5 minutes</div>
+                                </div>
+                            </div>
+                            <h3 class="mt-1 fw-semi-bold fs-150">My trip to Athens</h3>
+                            <p>It would seem that in a city where Theseus, Plato and Epicurus once walked, the very idea of the subway is alien to the city, but already...</p>
+                        </li>
+                        <li class="post-card | group relative ">
+                            <div class="mb-2 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-xl bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50">
+                                <img src="./assets/images/wilderness-club-at-big-ceddar.png" alt="Wilderness Club at Big Ceddar" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <div class="mt-4 flex justify-between fs-nav">
+                                <div>
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        May 23, 2022
+                                    </a>
+                                </div>
+                                <div class="text-accent fw-regular flex gap-1 justify-end">
+                                    <div style="width: 20px;">
+                                        <img src="./assets/icons/icon-bx_time-five.svg" alt="">
+                                    </div>
+                                    <div>5 minutes</div>
+                                </div>
+                            </div>
+                            <h3 class="mt-1 fw-semi-bold fs-150">My trip to Athens</h3>
+                            <p>It would seem that in a city where Theseus, Plato and Epicurus once walked, the very idea of the subway is alien to the city, but already...</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="main-wrapper lg:mx-auto max-w-8xl pt-size-250  pb-size-250 px-2 sm:px-6 lg:px-8">
+                <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                    <li>
+                        <h6 class="fw-semi-bold">Title of section</h6>
+                        <ul>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h6 class="fw-semi-bold">Title of section</h6>
+                        <ul>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h6 class="fw-semi-bold">Title of section</h6>
+                        <ul>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fs-nav">page link</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-span-2 md:col-span-1">
+                        <h6 class="fw-semi-bold">Subscribe to Newsletter</h6>
+                        <ul>
+                            <li>
+                              <form action="">
+                                <label for="EmailAddress">Your Email</label>
+                                <div class="input-control-group bg-interaction">
+                                    <input type="text" id="EmailAddress">
+                                    <button>
+                                        <img src="./assets/icons/icon-carbon_send-alt.svg" alt="">
+                                    </button>
+                                </div>
+                              </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <!-- OwlCarousel2-2.3.4 JS -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="./assets/libs/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
+        <script src="./scripts/main.jquery.js"></script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+:root {
+    /* COLORS */
+    --color-interaction: #ee685f;
+    --color-accent: #2a90d9;
+    --color-text: #262729;
+    --color-text-alt: #858585;
+    --color-white: #ffffff;
+    --color-light: #f7f7f7;
+
+    /* TYPOGRAPHY */
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+    --ff-primary: "Montserrat", sans-serif;
+    --ff-body: var(--ff-primary);
+    --fs-body: 16px;
+    --fs-nav: 14px;
+    --fs-hero-title: 3rem; //48px;
+    --fs-section-title: 2.5rem; //40px;
+    --fs-140: 1.13rem; //18px;
+    --fs-150: 1.25rem; //20px;
+    --fs-200: 1.38rem; //22px;
+    --fs-250: 1.88rem; //30px;
+
+    /* SIZES */
+    --size-50: 1.88em; //30px;
+    --size-100: 2.63em; //42px;
+    --size-250: 3.81em; //61px;
+    --size-300: 4.88em; //78px;
+    --size-500: 6.25em; //100px;
+
+    /* FONT WEIGHT */
+    --fw-light: 400;
+    --fw-regular: 500;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+
+    /* LINE HEIGHT*/
+    --lh-200: 60px;
+}
+@media (max-width: 50em) {
+    :root {
+        /* TYPOGRAPHY */
+        --fs-hero-title: 2rem; //32px;
+        --fs-section-title: 1.75rem; //28px;
+        --fs-140: 1rem; //16px;
+        --fs-150: 0.88rem; //14px;
+        --fs-200: 0.81rem; //13px;
+        --fs-250: 0.63rem; //10px;
+
+        /* SIZES */
+        --size-50: 1em; //16px;
+        --size-100: 1.38em; //22px;
+        --size-250: 2.5em; //40px;
+        --size-300: 3.44em; //55px;
+        --size-500: 5em; //80px;
+
+        /* LINE HEIGHT*/
+        --lh-200: 35px;
+    }
+}
